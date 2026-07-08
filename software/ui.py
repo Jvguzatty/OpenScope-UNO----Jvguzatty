@@ -23,6 +23,17 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
+        self.setStyleSheet("""
+        QMainWindow{
+            background:#111111;
+        }
+
+        QWidget{
+            background:#111111;
+            color:white;
+        }
+        """)
+
         self.setWindowTitle("OpenScope -- Jvguzatty")
 
         self.resize(1200, 700)

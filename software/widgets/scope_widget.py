@@ -34,4 +34,20 @@ class Oscilloscope:
 
     def update(self, samples):
 
+        if not samples:
+            return
+
+        ymin = min(samples)
+        ymax = max(samples)
+
+        margem = (ymax - ymin) * 0.10
+
+        if margem < 5:
+            margem = 5
+
+        self.widget.setYRange(
+            ymin - margem,
+            ymax + margem
+        )
+
         self.curve.setData(samples)

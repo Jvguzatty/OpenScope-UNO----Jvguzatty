@@ -10,6 +10,7 @@
 import sys
 
 from PySide6.QtWidgets import QApplication
+from measurements import Measurements
 
 from serial_manager import SerialManager
 from ui import MainWindow
@@ -28,5 +29,10 @@ while True:
     samples = serial.read_samples()
 
     window.scope.update(samples)
+    
+    measurements = Measurements.analyze(samples)
+
+    if measurements:
+        window.bottomBar.updateMeasurements(measurements)
 
     app.processEvents()

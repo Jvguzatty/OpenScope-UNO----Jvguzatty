@@ -16,6 +16,7 @@ from PySide6.QtWidgets import (
 from styles import *
 
 
+
 class BottomBar(QWidget):
 
     def __init__(self):
@@ -53,3 +54,11 @@ class BottomBar(QWidget):
         layout.addWidget(self.samples)
 
         self.setLayout(layout)
+
+    def updateMeasurements(self, data):
+
+        self.vmax.setText(f"Vmax: {data['vmax']:.2f} V")
+
+        self.vmin.setText(f"Vmin: {data['vmin']:.2f} V")
+
+        self.vpp.setText(f"Vpp: {data['vpp']:.2f} V")
