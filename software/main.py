@@ -1,28 +1,32 @@
-print("Programa iniciado")
+# ==========================================
+# COMO EXECUTAR O OPENSCOPE
+#
+# Abra o terminal na pasta do projeto e execute:
+#
+# python software/main.py
+#
+# ==========================================
 
 import sys
 
 from PySide6.QtWidgets import QApplication
 
 from serial_manager import SerialManager
-from oscilloscope import Oscilloscope
+from ui import MainWindow
 
 
 app = QApplication(sys.argv)
 
-scope = Oscilloscope()
+window = MainWindow()
 
-scope.widget.setWindowTitle("OpenScope UNO -- Jvguzatty")
-
-scope.widget.show()
+window.show()
 
 serial = SerialManager("COM3", 115200)
-
 
 while True:
 
     samples = serial.read_samples()
 
-    scope.update(samples)
+    window.scope.update(samples)
 
     app.processEvents()

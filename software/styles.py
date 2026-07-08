@@ -1,0 +1,7 @@
+BACKGROUND = "#101010"
+
+GRID = "#2f2f2f"
+
+WAVE = "#FFD400"
+
+TEXT = "#E0E0E0"

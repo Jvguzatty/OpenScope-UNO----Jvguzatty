@@ -9,6 +9,10 @@ uint16_t samples[SAMPLE_COUNT];
 void setup()
 {
     serialInit();
+
+    pinMode(9, OUTPUT);
+    analogWrite(9, 128);
+
     adcInit();
 }
 
