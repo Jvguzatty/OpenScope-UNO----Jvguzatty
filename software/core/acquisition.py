@@ -7,7 +7,8 @@ Aquisição de dados.
 ==========================================
 """
 
-from software.core.trigger import Trigger
+from .trigger import Trigger
+
 
 class Acquisition:
 

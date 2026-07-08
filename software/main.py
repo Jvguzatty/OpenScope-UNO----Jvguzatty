@@ -3,20 +3,21 @@
 #
 # Abra o terminal na pasta do projeto e execute:
 #
-# python software/main.py
+# python -m software.main
 #
 # ==========================================
 
 import sys
+import time
 
 from PySide6.QtWidgets import QApplication
+
 from software.core.measurements import Measurements
 from software.core.fps import FPS
-
-
-from software.Communication.serial_manager import SerialManager
+from software.communication.serial_manager import SerialManager
 from software.core.acquisition import Acquisition
-from ui import MainWindow
+from software.ui.main_window import MainWindow
+from software.utils.config import SERIAL_PORT, SERIAL_BAUD
 
 
 app = QApplication(sys.argv)
@@ -27,16 +28,12 @@ fpsCounter = FPS()
 
 window.show()
 
-from utils.config import *
-
 serial = SerialManager(
     SERIAL_PORT,
     SERIAL_BAUD
 )
 
 acquisition = Acquisition(serial)
-
-import time
 
 while True:
     
