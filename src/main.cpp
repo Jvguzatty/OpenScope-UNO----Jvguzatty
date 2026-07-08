@@ -1,17 +1,22 @@
 #include <Arduino.h>
 
+#include "config.h"
+#include "serial.h"
+#include "adc.h"
+
+uint16_t samples[SAMPLE_COUNT];
+
 void setup()
 {
-    Serial.begin(9600);
-
-    // Espera um instante para a Serial estabilizar
-    delay(1000);
-
-    Serial.println("Arduino iniciado!");
+    serialInit();
+    adcInit();
 }
 
 void loop()
 {
-    Serial.println("Teste");
-    delay(1000);
+    adcCapture(samples, SAMPLE_COUNT);
+
+    serialSendSamples(samples, SAMPLE_COUNT);
+
+    delay(500);
 }
