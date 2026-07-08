@@ -10,12 +10,12 @@
 import sys
 
 from PySide6.QtWidgets import QApplication
-from measurements import Measurements
-from fps import FPS
+from software.core.measurements import Measurements
+from software.core.fps import FPS
 
 
-from serial_manager import SerialManager
-from acquisition import Acquisition
+from software.Communication.serial_manager import SerialManager
+from software.core.acquisition import Acquisition
 from ui import MainWindow
 
 

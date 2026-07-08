@@ -4,7 +4,7 @@ OpenScope
 Medições da forma de onda.
 ==========================================
 """
-
+from frequency import Frequency
 
 class Measurements:
 
@@ -29,8 +29,11 @@ class Measurements:
         vmin = Measurements.adc_to_voltage(adc_min)
         vpp = vmax - vmin
 
+        period = Frequency.analyze(samples)
+
         return {
             "vmax": vmax,
             "vmin": vmin,
-            "vpp": vpp
+            "vpp": vpp,
+            "period": period
         }
