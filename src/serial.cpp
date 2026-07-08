@@ -4,7 +4,7 @@
 void serialInit()
 {
     Serial.begin(SERIAL_BAUD);
-    delay(500);
+    delay(1);
 }
 
 void serialSendSamples(const uint16_t* buffer, uint16_t size)

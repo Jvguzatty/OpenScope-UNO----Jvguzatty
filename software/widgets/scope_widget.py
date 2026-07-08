@@ -17,13 +17,17 @@ class Oscilloscope:
             alpha=0.25
         )
 
-        self.widget.setYRange(0, 1023)
 
         self.widget.setMouseEnabled(False, False)
 
         self.widget.hideButtons()
 
         self.widget.setMenuEnabled(False)
+
+        self.widget.setLimits(
+            xMin=0,
+            xMax=255
+        )
 
         pen = pg.mkPen(
             color=WAVE,
@@ -40,10 +44,7 @@ class Oscilloscope:
         ymin = min(samples)
         ymax = max(samples)
 
-        margem = (ymax - ymin) * 0.10
-
-        if margem < 5:
-            margem = 5
+        margem = max((ymax - ymin) * 0.30, 100)
 
         self.widget.setYRange(
             ymin - margem,

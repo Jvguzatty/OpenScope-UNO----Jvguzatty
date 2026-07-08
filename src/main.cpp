@@ -22,5 +22,5 @@ void loop()
 
     serialSendSamples(samples, SAMPLE_COUNT);
 
-    delay(500);
+    delay(1);
 }
