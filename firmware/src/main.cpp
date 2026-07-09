@@ -21,6 +21,4 @@ void loop()
     adcCapture(samples, SAMPLE_COUNT);
 
     serialSendSamples(samples, SAMPLE_COUNT);
-
-    delay(1);
 }

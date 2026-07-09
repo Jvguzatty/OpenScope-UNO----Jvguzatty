@@ -4,7 +4,6 @@
 void serialInit()
 {
     Serial.begin(SERIAL_BAUD);
-    delay(1);
 }
 
 void serialSendSamples(const uint16_t* buffer, uint16_t size)
@@ -14,10 +13,14 @@ void serialSendSamples(const uint16_t* buffer, uint16_t size)
 
     Serial.write(HEADER, sizeof(HEADER));
 
+    const uint16_t payloadSize = size;
+    Serial.write(reinterpret_cast<const uint8_t*>(&payloadSize), sizeof(payloadSize));
+
     Serial.write(
         reinterpret_cast<const uint8_t*>(buffer),
         size * sizeof(uint16_t)
     );
 
     Serial.write(FOOTER, sizeof(FOOTER));
+    Serial.flush();
 }

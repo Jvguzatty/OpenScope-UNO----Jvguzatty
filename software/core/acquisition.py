@@ -7,19 +7,16 @@ Aquisição de dados.
 ==========================================
 """
 
-from .trigger import Trigger
+import serial
 
 
 class Acquisition:
 
-    def __init__(self, serial):
-
-        self.serial = serial
+    def __init__(self, serial_port):
+        self.serial = serial_port
 
     def capture(self):
-
-        samples = self.serial.read_samples()
-
-        samples = Trigger.process(samples)
-
-        return samples
+        try:
+            return self.serial.read_samples()
+        except (serial.SerialException, TimeoutError, ValueError):
+            return []
